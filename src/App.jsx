@@ -4,15 +4,16 @@ import GameStatus from './gameStatus';
 
 function App() {
 
-	const [board, setCells] = useState(["", "", "","", "", "", "", "", ""])
-	const [isRunning, setIsRunning] = useState(true);
+	//Setting the state variables
+	const [board, setCells] = useState(["", "", "","", "", "", "", "", ""])//Represents the board
+	const [isRunning, setIsRunning] = useState(true);//Checks whether the game is running
 	const [turn, setTurn] = useState("X");
-	const[roundWon, setRoundWon] = useState(false);
-	const winCells = useRef([]);
-	const cssRoot = document.documentElement;
+	const[roundWon, setRoundWon] = useState(false);//Checks if someone won
+	const winCells = useRef([]);//Winning cell combo
+	const cssRoot = document.documentElement;//Access the root in css file
 	
 
-
+	//winning combos
 	const winCondition = [
 		[0, 1, 2],
 		[3, 4, 5],
@@ -24,9 +25,9 @@ function App() {
 		[2, 4, 6]
 	]
 
-
+	//check if cell clicked
 	function cellClicked(index){
-		if(board[index] !== "" || !isRunning){
+		if(board[index] !== "" || !isRunning){//if  game is not runnign and cell clicked isn't empty
 			return;
 		}
 
@@ -43,16 +44,16 @@ function App() {
 
 			}
 			else{
-				return b;
+				return b;//rest of the array unchanged
 			}
 		});
 
-		setCells(gameBoard);
+		setCells(gameBoard);//set the board to the updtaed copy
 		checkWinner(gameBoard)
 	
 	}
 
-
+	//check if there's a winner
 	function checkWinner(gameBoard){
 		let roundWonCheck = false;
 		for(let x = 0; x < winCondition.length; x++){
@@ -65,14 +66,16 @@ function App() {
 				continue;
 			}
 
+			//if the cells are the same then there is a winner
 			if(cellA === cellB && cellB === cellC){
 				roundWonCheck = true;
-				winCells.current = condition;
+				winCells.current = condition;//set winCells to the cell combo to find winnig cells
 				break;
 			}
 	
 		}
 
+		//checking the win direction of the line
 		if(roundWonCheck){
 			setIsRunning(false);
 			if((winCells.current[2] - winCells.current[1]) === 4){
@@ -89,18 +92,20 @@ function App() {
 			}
 
 		}
+		//Game is a draw
 		else if(!gameBoard.includes("")){
 			setIsRunning(false);
 		}
+		//Game is not a draw and no one has won yet switch player
 		else{
 			setTurn(t => (t === "X")? "O" : "X");
 		}
-
+		//roundwon state variable
 		setRoundWon(roundWonCheck);
 	}
 
 
-
+	//restartGame
 	function restartGame(){
 		setCells(["","","","","","","","",""]);
 		winCells.current = [];
@@ -110,7 +115,8 @@ function App() {
 	}
 
 
-
+	//check if the index of any of the cells from the board is in
+	//winCells so we can chnage the css styling and apply the effects
 	return (
 		<body>
 			<div id="gameContainer">
