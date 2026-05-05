@@ -1,0 +1,80 @@
+:root{
+    --rotation: 0deg;
+}
+
+
+.cell{
+    width: 100px;
+    height: 100px;
+    border: solid rgb(255, 255, 255) 2px;
+    box-shadow: 0 0 0 2px;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.winner-cell{
+    width: 100px;
+    height: 100px;
+    border: solid rgb(255, 255, 255) 2px;
+    box-shadow: 0 0 0 2px;
+    cursor: pointer;
+    line-height: 100px;
+    font-size: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.winner-cell::after{
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 150px;
+    display: block;
+    background-color: rgb(0, 89, 255);
+    transform: rotate(var(--rotation));
+
+}
+#cellContainer{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 225px;
+    margin: auto;
+}
+#gameContainer{
+    font-family: 'Permanent marker', Arial, sans-serif ,cursive;
+    text-align: center;
+    color:whitesmoke;
+    
+}
+body{
+    background-color: hsl(225, 17%, 9%);
+
+}
+h1{
+    margin-left:70px;
+}
+h2{
+    margin-left:100px
+}
+#restartBtn{
+    margin-left:100px;
+    background-color: hsl(0, 97%, 50%);
+    color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-family: 'Permanent marker', Arial, sans-serif ,cursive;
+    cursor: pointer;
+    min-width: 125px;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    transition: background-color 0.5s ease;
+}
+
+#restartBtn:hover{
+    background-color: hsl(0, 97%, 45%);;
+}
