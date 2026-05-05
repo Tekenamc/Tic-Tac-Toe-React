@@ -117,6 +117,7 @@ function App() {
 
 	//check if the index of any of the cells from the board is in
 	//winCells so we can chnage the css styling and apply the effects
+	//Game status is a componenet used for conditional rendering
 	return (
 		<body>
 			<div id="gameContainer">

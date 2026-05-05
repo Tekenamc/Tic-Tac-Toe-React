@@ -1,5 +1,5 @@
 function GameStatus(props) {
-
+    //Check if round won to change h2 to player won or game draw or player turn
     if(props.roundWon){
         return <h2>Player {props.turn} wins</h2>
     }
