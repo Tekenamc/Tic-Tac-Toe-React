@@ -119,17 +119,15 @@ function App() {
 	//winCells so we can chnage the css styling and apply the effects
 	//Game status is a componenet used for conditional rendering
 	return (
-		<body>
-			<div id="gameContainer">
-				<h1>Tic Tac Toe</h1>
-				<div id="cellContainer">
-					{board.map((cell, index) =>
-					<div key ={index} className={winCells.current.includes(index)? "winner-cell":"cell"} onClick={() => cellClicked(index)}>{cell}</div>)}
-				</div>
-				<GameStatus roundWon={roundWon} turn={turn} board={board}/>
-				<button id="restartBtn" onClick={restartGame}>Restart</button>
+		<div id="gameContainer">
+			<h1>Tic Tac Toe</h1>
+			<div id="cellContainer">
+				{board.map((cell, index) =>
+				<div key ={index} className={winCells.current.includes(index)? "winner-cell":"cell"} onClick={() => cellClicked(index)}>{cell}</div>)}
 			</div>
-		</body>
+			<GameStatus roundWon={roundWon} turn={turn} board={board}/>
+			<button id="restartBtn" onClick={restartGame}>Restart</button>
+		</div>
 		
 	)
 }
